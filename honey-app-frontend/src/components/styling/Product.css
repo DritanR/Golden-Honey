@@ -1,0 +1,55 @@
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #FCD615;
+    border-radius: 20px;
+    padding: 20px 30px 20px 30px;
+    gap: 8px;
+    color: white;
+}
+.product-img {
+    max-height: 200px;
+    max-width: 200px;
+}
+.product-prise {
+    display: flex;
+    gap: 1px;
+    font-size: 20px;
+    color: white;
+}
+.add-to-cart {
+    background: #FCD615;
+    color: black;
+    border-radius: 15px;
+    padding: 10px 30px 10px 30px;
+    border: 1px solid black;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+.product-name {
+    color: #FCB43A;
+    margin: 0;
+    font-family: 'Handlee';
+    font-size: 23px;
+}
+.added-to-cart {
+    background: white;
+    color: black;
+    transition: transform 0.3s ease-in-out;
+}
+.add-to-cart:hover {
+    transform: scale(1.1);
+    background: #FCB43A;
+}
+.added-to-cart:hover {
+    transform: scale(1.1);
+    background: white;
+}
+.buttons-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

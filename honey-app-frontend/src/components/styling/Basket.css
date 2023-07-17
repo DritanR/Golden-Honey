@@ -1,0 +1,151 @@
+.basket {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    font-family: 'Handlee';
+}
+.basket-title {
+    text-align: center;
+    font-size: 40px;
+    margin: 0;
+    color: #FCD615;
+}
+.bpc-product-img {
+    height: 100px;
+    width: 100px;
+}
+.basket-container {
+    display: flex;
+    justify-content: space-around;
+}
+.basket-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.bpc-product-items {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.bpc-product-other {
+    display: flex;
+    flex-direction: column;
+}
+.basket-product-prise {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.bpc-quantity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.bpc-qunatity-input {
+    width: 30px;
+}
+.bpc-total-price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.money-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.money-details-img {
+    display: flex;
+    gap: 10px;
+}
+.money-details-text {
+    font-size: 15px;
+}
+.pay-card {
+    max-width: 45px;
+    max-height: 45px;
+}
+.bpc-product-text, .bpc-price-text, .bpc-quantity-text, .bpc-quantity-text-total {
+    font-size: 23px;
+    color: #FCB43A;
+    border-bottom: 1px solid white;
+}
+.bpc-product-remove {
+    background: #FCD615;
+    border-radius: 15px;
+    border: 1px solid black;
+    padding: 5px 10px 5px 10px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+.bpc-price-valute, .bpc-price-product-value, .bpc-quantity-valute, .bpc-quantity-value{
+    font-size: 18px;
+    font-family: none;
+}
+.bpc-product-name {
+    font-size: 18px;
+}
+.basket-small-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.sub-total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sub-total-elements {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+.subtotal-price {
+    font-family: none;
+    font-size: 18px;
+}
+.subtotal-name-text {
+    font-size: 23px;
+    color: #FCB43A;
+}
+.terms-conditions {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+}
+.basket-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.basket-buttons-right {
+    display: flex;
+    gap: 25px;
+}
+.continue-shopping, .update, .check-out {
+    color: black;
+    background: #FCD615;
+    font-size: 15px;
+    border-radius: 15px;
+    border: 1px solid black;
+    padding: 10px 30px 10px 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+.continue-shopping:hover, .update:hover, .check-out:hover, .bpc-product-remove:hover {
+    transform: scale(1.02);
+    background: #FCB43A;
+}
