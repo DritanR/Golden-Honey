@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { GiDrippingHoney, GiHamburgerMenu } from 'react-icons/gi';
 import { BsFillBasketFill, BsFillPeopleFill } from 'react-icons/bs'
 import './styling/Header.css';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Header = ({basketItems}) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -14,6 +15,8 @@ const Header = ({basketItems}) => {
   function Element(props) {
     return <li className='header-element'>{props.name}</li>;
   }
+
+    const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
   return (
     <div className='header'>
@@ -27,9 +30,16 @@ const Header = ({basketItems}) => {
       </Helmet>
 
       <nav className='header-nav'>
-        <p className='header-gallery'>
-        <BsFillPeopleFill className='people-icon'/>
-            Log In</p>
+        {!isAuthenticated ? (
+                 <p className='header-gallery' onClick={() => {loginWithRedirect()}}>
+                 <BsFillPeopleFill className='people-icon'/>
+                     Log In</p> 
+        ) : (
+          <p className='header-gallery' onClick={() => {logout()}}>
+          <BsFillPeopleFill className='people-icon'/>
+              Log Out</p> 
+        )
+        }
 
         <ul className='header-nav-ul'>
           <Element name='HOME' />
@@ -50,9 +60,17 @@ const Header = ({basketItems}) => {
       </nav>
 
       <div className='menu header-nav'>
-        <p className='header-gallery'>
-            <BsFillPeopleFill className='people-icon'/>
-            Log In</p>
+      {!isAuthenticated ? (
+                 <p className='header-gallery' onClick={() => {loginWithRedirect()}}>
+                 <BsFillPeopleFill className='people-icon'/>
+                     Log In</p> 
+        ) : (
+          <p className='header-gallery' onClick={() => {logout()}}>
+          <BsFillPeopleFill className='people-icon'/>
+              Log Out</p> 
+        )
+        }
+            
         <div className='flex-logo-icon'>
           <div className='logo-container'>
             <GiDrippingHoney className='logo'/>

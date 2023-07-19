@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Product from './Product';
 import './styling/Shop.css';
 import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
+import HoneyJar1 from './honeyjar1.png'
+import HoneyJar2 from './honeyjar2.png'
+import HoneyJar3 from './honeyjar3.png'
 
-const Shop = ({ updateBasketItems }) => {
-        
-        {/*const [activeShopContainer, setActiveShopContainer] = useState('shop-container1')
+const Shop = ({ updateBasketItems, handleBasketProductItems, removeItemFromBasket, showRemoveButtonBasket, showAddCardAgain }) => {
+
+    {/*const [activeShopContainer, setActiveShopContainer] = useState('shop-container1')
 
         function HandleActiveContainerRight () {
             setActiveShopContainer(previousContainer => {
@@ -38,17 +41,17 @@ const Shop = ({ updateBasketItems }) => {
                 <p className='shop-subtitle'>Check Out Our</p>
                 <h2 className='shop-title'>Shop</h2>
             </div>
-            
-        <div className={'shop-container shop-container1 '}>
-          <BsArrowLeftCircle className='shop-container-button' />
-          <Product updateBasketItems={updateBasketItems} />
-          <Product updateBasketItems={updateBasketItems} />
-          <Product updateBasketItems={updateBasketItems} />
-          <BsArrowRightCircle className='shop-container-button' />
-        </div>
 
-        
-        { /*{activeShopContainer === 'shop-container2' && (
+            <div className={'shop-container shop-container1 '}>
+                <BsArrowLeftCircle className='shop-container-button' />
+                <Product updateBasketItems={updateBasketItems} ProductName='Big Honey Jar' ProductImage={HoneyJar1} ProductPrice={24.99} handleBasketProductItems={handleBasketProductItems} />
+                <Product updateBasketItems={updateBasketItems} ProductName='Medium Honey Jar' ProductImage={HoneyJar2} ProductPrice={19.99} handleBasketProductItems={handleBasketProductItems} />
+                <Product updateBasketItems={updateBasketItems} ProductName='Small Honey Jar' ProductImage={HoneyJar3} ProductPrice={14.99} handleBasketProductItems={handleBasketProductItems} />
+                <BsArrowRightCircle className='shop-container-button' />
+            </div>
+
+
+            { /*{activeShopContainer === 'shop-container2' && (
         <div className={'shop-container shop-container2 '}>
           <button className='shop-container-button' onClick={HandleActiveContainerLeft}>sss</button>
           <Product updateBasketItems={updateBasketItems} />

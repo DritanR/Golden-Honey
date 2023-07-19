@@ -1,7 +1,8 @@
-import IMG from './honeyjar.png';
+import IMG from './honeyjar1.png';
 import './styling/Basket.css'
 
-const Basket = () => {
+const Basket = ({productImgBasket, productNameBasket, productPriceBasket, showRemoveButtonBasket, removeItemFromBasket}) => {
+    
     return (
         <div className="basket">
 
@@ -10,10 +11,10 @@ const Basket = () => {
             <div className="basket-product">
                 <span className="bpc-product-text">Product</span>
                 <div className = "bpc-product-items">
-                    <img className="bpc-product-img" src ={IMG} />
+                    {showRemoveButtonBasket && <img className="bpc-product-img" src ={productImgBasket} />}
                     <div className="bpc-product-other">
-                    <p className = "bpc-product-name">Medium Honey Jar</p>
-                    <button className="bpc-product-remove">REMOVE</button>
+                    {showRemoveButtonBasket && <p className = "bpc-product-name">{productNameBasket}</p>}
+                    {showRemoveButtonBasket && <button onClick={removeItemFromBasket} className="bpc-product-remove">REMOVE</button>}
                     </div>
                 </div>
             </div>
@@ -21,23 +22,25 @@ const Basket = () => {
             <div className="basket-product-prise">
                 <span className = "bpc-price-text">Price</span>
                 <div className = "bpc-price-number">
-                    <span className="bpc-price-valute">$</span>
-                    <span className="bpc-price-product-value">4.99</span>
+                    {showRemoveButtonBasket && <span className="bpc-price-valute">$</span>}
+                    {showRemoveButtonBasket && <span className="bpc-price-product-value">{productPriceBasket}</span>}
                 </div>
             </div>
 
             <div className="bpc-quantity">
                 <span className="bpc-quantity-text">Quantity</span>
-                <input className="bpc-qunatity-input"/>
+                {showRemoveButtonBasket && <input type='number' className="bpc-qunatity-input"/>}
             </div>
 
             <div className="bpc-total-price">
                 <span className="bpc-quantity-text-total">Total</span>
                 <div className="bpc-quantity-number">
-                    <span className="bpc-quantity-valute">$</span>
-                    <span className="bpc-quantity-value">20</span>
+                    {showRemoveButtonBasket && <span className="bpc-quantity-valute">$</span>}
+                    {showRemoveButtonBasket && <span className="bpc-quantity-value">20</span>}
                 </div>
             </div>
+
+            
 
         </div>
         <div className="money-details">
@@ -179,8 +182,8 @@ const Basket = () => {
                 <span className="subtotal-name-text">Subtotal</span>
             </div>
             <div className="subtotal-price">
-            <span className="subtotal-valute">$</span>
-            <span className="subtotal-value">20</span>
+            {showRemoveButtonBasket && <span className="subtotal-valute">$</span>}
+            {showRemoveButtonBasket && <span className="subtotal-value">20</span>}
             </div>
             </div>
             <p className="delivery">FREE UK delivery on all orders over £40</p>

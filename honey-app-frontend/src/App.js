@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom'
 import { fetchData } from './api';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -14,7 +15,7 @@ function App() {
   const [basketItems, setBasketItems] = useState(0)
 
 
-  function updateBasketItems () {
+  function updateBasketItems() {
     setBasketItems(basketItems + 1);
   }
 
@@ -23,6 +24,22 @@ function App() {
       .then(data => setData(data))
       .catch(error => console.error(error));
   }, []);
+
+  const [productImgBasket, setProductImgBasket] = useState(null)
+  const [productNameBasket, setProductNameBasket] = useState('')
+  const [productPriceBasket, setProductPriceBasket] = useState('')
+  const [showRemoveButtonBasket, setShowRemoveButtonBasket] = useState(false)
+
+  function handleBasketProductItems(basketProductImage, basketProductName, basketProductPrice) {
+    setProductImgBasket(basketProductImage)
+    setProductNameBasket(basketProductName)
+    setProductPriceBasket(basketProductPrice)
+    setShowRemoveButtonBasket(true)
+  }
+
+  function removeItemFromBasket() {
+    setShowRemoveButtonBasket(false)
+  }
 
   return (
     <div>
@@ -41,13 +58,14 @@ function App() {
           rel="stylesheet"
         />
       </Helmet>
-
-      <Header basketItems={basketItems}/>
+      <Header basketItems={basketItems} />
       <Home />
       <About />
-      <Shop updateBasketItems={updateBasketItems}/>
+      <Shop updateBasketItems={updateBasketItems} handleBasketProductItems={handleBasketProductItems} showRemoveButtonBasket={showRemoveButtonBasket} removeItemFromBasket={removeItemFromBasket} />
       <Contact />
       <Footer />
+      <Basket productImgBasket={productImgBasket} productNameBasket={productNameBasket} productPriceBasket={productPriceBasket} showRemoveButtonBasket={showRemoveButtonBasket} removeItemFromBasket={removeItemFromBasket} />
+
       {/* Display the fetched data */}
       {data.map(item => (
         <p key={item.id}>{item.name}</p>

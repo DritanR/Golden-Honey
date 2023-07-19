@@ -1,27 +1,27 @@
 import { useState } from 'react';
 import './styling/Product.css'
-import img from './honeyjar.png'
 
-const Product = ({ updateBasketItems }) => {
+const Product = ({ updateBasketItems, ProductName, ProductImage, ProductPrice, handleBasketProductItems }) => {
 
-    const [addedToCard, setAddedToCard] = useState(false)
+    const [showViewCartButton, setShowViewCartButton] = useState(false)
 
     const handleAddToBasket = () => {
         updateBasketItems();
-        setAddedToCard(true)
+        handleBasketProductItems(ProductImage, ProductName, ProductPrice)
+        setShowViewCartButton(true)
       };
 
     return (
         <div className = 'product'>
-            <img className = 'product-img' src = {img} />
-            <h2 className = 'product-name'>Medium Honey Jar</h2>
+            <img className = 'product-img' src = {ProductImage} />
+            <h2 className = 'product-name'>{ProductName}</h2>
             <div className = 'product-prise'>
                 <span className = 'valute'>$</span>
-                <span className = 'sum'>4.99</span>
+                <span className = 'sum'>{ProductPrice}</span>
             </div>
-            {!addedToCard && <button onClick={handleAddToBasket} className = 'add-to-cart' >ADD TO CART</button>}
             <div className='buttons-card'>
-            {addedToCard && <button className = 'add-to-cart added-to-cart' >VIEW CART</button>}
+            {!showViewCartButton && <button onClick={handleAddToBasket} className = 'add-to-cart' >ADD TO CART</button>}
+            {showViewCartButton && <button className = 'add-to-cart added-to-cart' >VIEW CART</button>}
             </div>
         </div>
     );
