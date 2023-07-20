@@ -1,45 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom'
-import { fetchData } from './api';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Home from './components/Home';
 import { Helmet } from 'react-helmet';
 import About from './components/About';
 import Shop from './components/Shop';
 import Contact from './components/Contact';
-import Basket from './components/Basket';
 import Footer from './components/Footer';
+import Cart from './components/Cart';
 
 function App() {
-  const [data, setData] = useState([]);
-  const [basketItems, setBasketItems] = useState(0)
 
+  const [show, setShow] = useState(true)
 
-  function updateBasketItems() {
-    setBasketItems(basketItems + 1);
+  const [cart, setCart] = useState([])
+
+  function handleDataInCart(item) {
+    if (cart.indexOf(item) !== -1) return;
+    setCart([...cart, item]);
   }
 
-  useEffect(() => {
-    fetchData()
-      .then(data => setData(data))
-      .catch(error => console.error(error));
-  }, []);
+  const handleChange = (item, d) => {
+    const ind = cart.indexOf(item);
+    const arr = cart;
+    arr[ind].amount += d;
 
-  const [productImgBasket, setProductImgBasket] = useState(null)
-  const [productNameBasket, setProductNameBasket] = useState('')
-  const [productPriceBasket, setProductPriceBasket] = useState('')
-  const [showRemoveButtonBasket, setShowRemoveButtonBasket] = useState(false)
-
-  function handleBasketProductItems(basketProductImage, basketProductName, basketProductPrice) {
-    setProductImgBasket(basketProductImage)
-    setProductNameBasket(basketProductName)
-    setProductPriceBasket(basketProductPrice)
-    setShowRemoveButtonBasket(true)
-  }
-
-  function removeItemFromBasket() {
-    setShowRemoveButtonBasket(false)
-  }
+    if (arr[ind].amount === 0) arr[ind].amount = 1;
+    setCart([...arr]);
+  };
 
   return (
     <div>
@@ -58,18 +45,13 @@ function App() {
           rel="stylesheet"
         />
       </Helmet>
-      <Header basketItems={basketItems} />
+      <Header setShow={setShow} cart={cart} />
       <Home />
       <About />
-      <Shop updateBasketItems={updateBasketItems} handleBasketProductItems={handleBasketProductItems} showRemoveButtonBasket={showRemoveButtonBasket} removeItemFromBasket={removeItemFromBasket} />
+      {show ? (<Shop handleDataInCart={handleDataInCart} setShow={setShow} />)
+        : (<Cart cart={cart} setCart={setCart} handleChange={handleChange} setShow={setShow} />)}
       <Contact />
       <Footer />
-      <Basket productImgBasket={productImgBasket} productNameBasket={productNameBasket} productPriceBasket={productPriceBasket} showRemoveButtonBasket={showRemoveButtonBasket} removeItemFromBasket={removeItemFromBasket} />
-
-      {/* Display the fetched data */}
-      {data.map(item => (
-        <p key={item.id}>{item.name}</p>
-      ))}
     </div>
   );
 }

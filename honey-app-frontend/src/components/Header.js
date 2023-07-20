@@ -5,7 +5,7 @@ import { BsFillBasketFill, BsFillPeopleFill } from 'react-icons/bs'
 import './styling/Header.css';
 import { useAuth0 } from "@auth0/auth0-react";
 
-const Header = ({basketItems}) => {
+const Header = ({ setShow, cart}) => {
   const [showMenu, setShowMenu] = useState(false);
 
   function toggleMenu() {
@@ -52,9 +52,9 @@ const Header = ({basketItems}) => {
           <Element name='CONTACT' />
         </ul>
 
-        <div className='header-basket'>
+        <div className='header-basket' onClick={() => setShow(false)}>
           <BsFillBasketFill className='basket-icon'/>
-          <span className='basket-items'>{basketItems}</span>
+          <span className='basket-items'>{cart.length}</span>
           <span className='basket-text'>Items </span>
         </div>
       </nav>
@@ -90,7 +90,7 @@ const Header = ({basketItems}) => {
         )}
         <div className='header-basket'>
           <BsFillBasketFill className='basket-icon'/>
-          <span className='basket-items'>{basketItems}</span>
+          <span className='basket-items'>{cart.length}</span>
           <span className='basket-text'>Items </span>
         </div>
       </div>
