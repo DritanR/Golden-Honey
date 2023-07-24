@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import './styling/Cart.css'
-import { PayPalScriptProvider } from "@paypal/react-paypal-js"
-import Payment from "./Payment";
 
 const Cart = ({ cart, setCart, handleChange, setShow}) => {
 
@@ -22,14 +20,7 @@ const Cart = ({ cart, setCart, handleChange, setShow}) => {
   useEffect(() => {
     handlePrice();
   });
-
-
-  const initialOptions = {
-    clientId: "AeYWJ0LbBFMgF-EMZPSUKsHFitG-3zhnGKXDFMz2CLHWTuffEL5G-mQz0WSDcfL_fZtNYULyRS3TpoKx",
-    currency: "USD",
-    intent: "capture",
-};
-
+  
   return (
     <article className="all-items-cart" style={{ color: 'white' }}>
       <div className="cart-titles">
@@ -57,9 +48,6 @@ const Cart = ({ cart, setCart, handleChange, setShow}) => {
       <div className="end-of-the-cart">
 
         <div className="cart-buttons">
-        <PayPalScriptProvider options={initialOptions}>
-          <Payment price={price} />
-          </PayPalScriptProvider>
           <button className="cart-continue-shopping" onClick={() => setShow(true)}>CONTINUE SHOPPING</button>
         </div>
 

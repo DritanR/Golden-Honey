@@ -7,6 +7,14 @@ import Shop from './components/Shop';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Cart from './components/Cart';
+import NavbarComponent from './components/Navbaar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container } from 'react-bootstrap';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Cancel from './pages/Cancel';
+import Store from './pages/Store';
+import Success from './pages/Success';
+import CartProvider from './CartContext';
 
 function App() {
 
@@ -30,21 +38,6 @@ function App() {
 
   return (
     <div>
-      <Helmet>
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-        />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Caveat&family=Handlee&display=swap"
-          rel="stylesheet"
-        />
-      </Helmet>
       <Header setShow={setShow} cart={cart} />
       <Home />
       <About />
@@ -52,6 +45,19 @@ function App() {
         : (<Cart cart={cart} setCart={setCart} handleChange={handleChange} setShow={setShow} />)}
       <Contact />
       <Footer />
+
+    <CartProvider>
+    <Container>
+      <NavbarComponent></NavbarComponent>
+      <BrowserRouter>
+      <Routes>
+        <Route index element={<Store />} />
+        <Route path="success" element={<Success />} />
+        <Route path="cancel" element={<Cancel />} />
+      </Routes>
+      </BrowserRouter>
+      </Container>
+      </CartProvider>
     </div>
   );
 }
