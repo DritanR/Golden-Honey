@@ -1,0 +1,59 @@
+.store-titles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px 0 100px 0;
+}
+.store-subtitle {
+    color: #F3C622;
+    font-family: 'Caveat';
+    font-size: 25px;
+}
+.store-title {
+    color: #FCB43A;
+    font-family: 'Handlee';
+    font-size: 50px;
+}
+.store-bottom {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 80px;
+    font-family: 'Handlee';
+}
+.sb-button {
+     background: #FCB43A;
+     color: black;
+     padding: 10px 40px 10px 40px;
+     font-weight: 600;
+     border-radius: 5px;
+     border: 1px solid black;
+     font-size: 20px;
+}
+.sb-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sb-text {
+    font-size: 20px;
+    color: white;
+}
+.money-back-icon {
+    height: 60px;
+    width: 60px;
+}
+.sb-total-cotnainer {
+    display: flex;
+    align-items: center;
+}
+.sb-total-text {
+    font-size: 40px;
+    color: #F3C622;
+}
+.sb-total-value {
+    font-size: 30px;
+    color: white;
+    font-family: none;
+    font-weight: 200;
+}

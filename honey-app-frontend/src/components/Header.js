@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { GiDrippingHoney, GiHamburgerMenu } from 'react-icons/gi';
 import { BsFillBasketFill, BsFillPeopleFill } from 'react-icons/bs'
 import './styling/Header.css';
 import { useAuth0 } from "@auth0/auth0-react";
+import { CartContext } from '../CartContext';
+import CartModal from '../components/CartModal';
 
-const Header = ({ setShow, cart}) => {
+const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   function toggleMenu() {
@@ -16,7 +18,18 @@ const Header = ({ setShow, cart}) => {
     return <li className='header-element'>{props.name}</li>;
   }
 
-    const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+
+  const cart = useContext(CartContext);
+
+  const productsCount = cart.items.reduce((sum, product) => sum + product.quantity, 0)
+
+  const [showCartModal, setShowCartModal] = useState(false); // State to control the visibility of the modal
+
+  // Function to handle "View Cart" button click and show the modal
+  const handleViewCart = () => {
+    setShowCartModal(true);
+  };
 
   return (
     <div className='header'>
@@ -31,13 +44,13 @@ const Header = ({ setShow, cart}) => {
 
       <nav className='header-nav'>
         {!isAuthenticated ? (
-                 <p className='header-gallery' onClick={() => {loginWithRedirect()}}>
-                 <BsFillPeopleFill className='people-icon'/>
-                     Log In</p> 
+          <p className='header-gallery' onClick={() => { loginWithRedirect() }}>
+            <BsFillPeopleFill className='people-icon' />
+            Log In</p>
         ) : (
-          <p className='header-gallery' onClick={() => {logout()}}>
-          <BsFillPeopleFill className='people-icon'/>
-              Log Out</p> 
+          <p className='header-gallery' onClick={() => { logout() }}>
+            <BsFillPeopleFill className='people-icon' />
+            Log Out</p>
         )
         }
 
@@ -48,32 +61,32 @@ const Header = ({ setShow, cart}) => {
             <GiDrippingHoney className='logo' />
             <p className='logo-name'>Golden Honey</p>
           </div>
-          <Element name='SHOP' />
+          <Element name='STORE' />
           <Element name='CONTACT' />
         </ul>
 
-        <div className='header-basket' onClick={() => setShow(false)}>
-          <BsFillBasketFill className='basket-icon'/>
-          <span className='basket-items'>{cart.length}</span>
+        <div className='header-basket' onClick={handleViewCart}>
+          <BsFillBasketFill className='basket-icon' />
+          <span className='basket-items'>{productsCount}</span>
           <span className='basket-text'>Items </span>
         </div>
       </nav>
 
       <div className='menu header-nav'>
-      {!isAuthenticated ? (
-                 <p className='header-gallery' onClick={() => {loginWithRedirect()}}>
-                 <BsFillPeopleFill className='people-icon'/>
-                     Log In</p> 
+        {!isAuthenticated ? (
+          <p className='header-gallery' onClick={() => { loginWithRedirect() }}>
+            <BsFillPeopleFill className='people-icon' />
+            Log In</p>
         ) : (
-          <p className='header-gallery' onClick={() => {logout()}}>
-          <BsFillPeopleFill className='people-icon'/>
-              Log Out</p> 
+          <p className='header-gallery' onClick={() => { logout() }}>
+            <BsFillPeopleFill className='people-icon' />
+            Log Out</p>
         )
         }
-            
+
         <div className='flex-logo-icon'>
           <div className='logo-container'>
-            <GiDrippingHoney className='logo'/>
+            <GiDrippingHoney className='logo' />
             <p className='logo-name'>Golden Honey</p>
           </div>
           <button className='menu-icon-button' onClick={toggleMenu}>
@@ -84,16 +97,18 @@ const Header = ({ setShow, cart}) => {
           <ul className='header-nav-ul'>
             <Element name='HOME' />
             <Element name='ABOUT' />
-            <Element name='SHOP' />
+            <Element name='STORE' />
             <Element name='CONTACT' />
           </ul>
         )}
         <div className='header-basket'>
-          <BsFillBasketFill className='basket-icon'/>
-          <span className='basket-items'>{cart.length}</span>
+          <BsFillBasketFill className='basket-icon' />
+          <span className='basket-items'>{productsCount}</span>
           <span className='basket-text'>Items </span>
         </div>
       </div>
+
+      <CartModal show={showCartModal} handleClose={() => setShowCartModal(false)} />
     </div>
   );
 };

@@ -1,6 +1,12 @@
-function Cancel () {
+import '../components/styling/SuccessCancel.css'
+import { Link } from 'react-router-dom'
+
+function Cancel() {
     return (
-    <h1 style={{color: 'red'}}>Sorry to see you cancelled your Stripe payment!</h1>
+    <div className="success-cancel-container">
+    <h1 className="h1-sc-cn">Sorry, your order is canceled!</h1>
+    <Link to="/"><button className="button-sc-cn">Continue Shopping</button></Link>
+    </div>
     )
 }
 

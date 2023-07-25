@@ -86,6 +86,10 @@
 .menu {
   display: none;
 }
+.basket-items {
+  font-family: none;
+  font-weight: 400;
+}
 
 /* Responsive */
 @media (max-width: 1400px) {
