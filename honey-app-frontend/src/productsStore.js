@@ -15,13 +15,13 @@ const productsArray = [
     {
         id: "price_1NYA7dBYw98632o1BOU8ZsUa",
         title: "Medium Honey Jar",
-        img: HoneyJar2,
+        img: HoneyJar1,
         price: 7.99
     },
     {
         id: "price_1NYA8gBYw98632o1LHXScJOa",
         title: "Big Honey Jar",
-        img: HoneyJar3,
+        img: HoneyJar1,
         price: 14.99
     }
 ]
