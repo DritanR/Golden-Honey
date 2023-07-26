@@ -20,7 +20,7 @@ function Store() {
 
     return (
         <>
-            <div className='store-titles'>
+            <div className='store-titles' id="store">
                 <h2 className='store-subtitle'>Check Out</h2>
                 <h1 className="store-title">Our Store</h1>
             </div>

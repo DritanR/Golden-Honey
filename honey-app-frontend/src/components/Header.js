@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { GiDrippingHoney, GiHamburgerMenu } from 'react-icons/gi';
-import { BsFillBasketFill, BsFillPeopleFill } from 'react-icons/bs'
+import { BsFillBasketFill } from 'react-icons/bs'
+import { GrGallery } from 'react-icons/gr'
 import './styling/Header.css';
-import { useAuth0 } from "@auth0/auth0-react";
 import { CartContext } from '../CartContext';
 import CartModal from '../components/CartModal';
 
@@ -18,8 +18,6 @@ const Header = () => {
     return <li className='header-element'>{props.name}</li>;
   }
 
-  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
-
   const cart = useContext(CartContext);
 
   const productsCount = cart.items.reduce((sum, product) => sum + product.quantity, 0)
@@ -29,6 +27,11 @@ const Header = () => {
   // Function to handle "View Cart" button click and show the modal
   const handleViewCart = () => {
     setShowCartModal(true);
+  };
+
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    section.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -43,26 +46,20 @@ const Header = () => {
       </Helmet>
 
       <nav className='header-nav'>
-        {!isAuthenticated ? (
-          <p className='header-gallery' onClick={() => { loginWithRedirect() }}>
-            <BsFillPeopleFill className='people-icon' />
-            Log In</p>
-        ) : (
-          <p className='header-gallery' onClick={() => { logout() }}>
-            <BsFillPeopleFill className='people-icon' />
-            Log Out</p>
-        )
-        }
+          <p className='header-gallery'>
+            <GrGallery className='people-icon' /><a href='https://photos.app.goo.gl/NgWyXFzbN219J8C48' className='header-gallery'>
+            Gallery</a></p>
+
 
         <ul className='header-nav-ul'>
-          <Element name='HOME' />
-          <Element name='ABOUT' />
+          <li style={{listStyle: 'none'}} onClick={() => scrollToSection('home')}><Element name='HOME'/></li>
+          <li style={{listStyle: 'none'}} onClick={() => scrollToSection('about')}><Element name='ABOUT' /></li>
           <div className='logo-container'>
             <GiDrippingHoney className='logo' />
             <p className='logo-name'>Golden Honey</p>
           </div>
-          <Element name='STORE' />
-          <Element name='CONTACT' />
+          <li style={{listStyle: 'none'}} onClick={() => scrollToSection('store')}><Element name='STORE' /></li>
+          <li style={{listStyle: 'none'}} onClick={() => scrollToSection('contact')}><Element name='CONTACT' /></li>
         </ul>
 
         <div className='header-basket' onClick={handleViewCart}>
@@ -73,16 +70,9 @@ const Header = () => {
       </nav>
 
       <div className='menu header-nav'>
-        {!isAuthenticated ? (
-          <p className='header-gallery' onClick={() => { loginWithRedirect() }}>
-            <BsFillPeopleFill className='people-icon' />
-            Log In</p>
-        ) : (
-          <p className='header-gallery' onClick={() => { logout() }}>
-            <BsFillPeopleFill className='people-icon' />
-            Log Out</p>
-        )
-        }
+          <p className='header-gallery'>
+            <GrGallery className='people-icon' /> <a href='https://photos.app.goo.gl/NgWyXFzbN219J8C48' className='header-gallery'>
+            Gallery</a></p>
 
         <div className='flex-logo-icon'>
           <div className='logo-container'>
@@ -95,13 +85,13 @@ const Header = () => {
         </div>
         {showMenu && (
           <ul className='header-nav-ul'>
-            <Element name='HOME' />
-            <Element name='ABOUT' />
-            <Element name='STORE' />
-            <Element name='CONTACT' />
+            <li style={{listStyle: 'none', border: 'none'}} onClick={() => scrollToSection('home')}><Element name='HOME' /></li>
+            <li style={{listStyle: 'none', border: 'none'}} onClick={() => scrollToSection('about')}><Element name='ABOUT' /></li>
+            <li style={{listStyle: 'none', border: 'none'}} onClick={() => scrollToSection('store')}><Element name='STORE' /></li>
+            <li style={{listStyle: 'none', border: 'none'}} onClick={() => scrollToSection('contact')}><Element name='CONTACT' /></li>
           </ul>
         )}
-        <div className='header-basket'>
+        <div className='header-basket' onClick={handleViewCart}>
           <BsFillBasketFill className='basket-icon' />
           <span className='basket-items'>{productsCount}</span>
           <span className='basket-text'>Items </span>

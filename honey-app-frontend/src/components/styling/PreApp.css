@@ -1,0 +1,24 @@
+.pre-app-h1{
+    color: #FCB43A;
+    font-family: 'Caveat';
+    display: flex;
+    justify-content: center;
+    margin-top: 320px;
+    font-size: 80px;
+    text-align: center;
+}
+@media (max-width: 1400px) {
+    .pre-app-h1 {
+        font-size: 75px;
+    }
+}
+@media (max-width: 1200px) {
+    .pre-app-h1 {
+        font-size: 70px;
+    }
+}
+@media (max-width: 600px) {
+    .pre-app-h1 {
+        font-size: 60px;
+    }
+}

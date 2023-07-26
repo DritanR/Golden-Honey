@@ -90,6 +90,12 @@
   font-family: none;
   font-weight: 400;
 }
+.basket-icon {
+  color: black;
+}
+.basket-icon:hover {
+  color: black;
+}
 
 /* Responsive */
 @media (max-width: 1400px) {

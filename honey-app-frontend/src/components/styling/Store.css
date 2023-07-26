@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 100px 0 100px 0;
+    margin: 200px 0 100px 0;
 }
 .store-subtitle {
     color: #F3C622;
@@ -29,6 +29,11 @@
      border-radius: 5px;
      border: 1px solid black;
      font-size: 20px;
+     transition: transform 0.3s ease-in-out;
+}
+.sb-button:hover {
+    transform: scale(1.1);
+    background: #F3C622;
 }
 .sb-text-container {
     display: flex;
@@ -56,4 +61,92 @@
     color: white;
     font-family: none;
     font-weight: 200;
+}
+
+@media (max-width: 1400px) {
+    .store-subtitle {
+        font-size: 23px;
+    }
+    .store-title {
+        color: #FCB43A;
+        font-family: 'Handlee';
+        font-size: 48px;
+    }
+    .sb-button {
+        font-size: 18px;
+   }
+   .sb-total-text {
+    font-size: 38px;
+    color: #F3C622;
+}
+.sb-total-value {
+    font-size: 28px;
+}
+.sb-text {
+    font-size: 18px;
+}
+.money-back-icon {
+    height: 55px;
+    width: 55px;
+}
+}
+
+@media (max-width: 1200px) {
+    .store-subtitle {
+        font-size: 21px;
+    }
+    .store-title {
+        color: #FCB43A;
+        font-family: 'Handlee';
+        font-size: 46px;
+    }
+    .sb-button {
+        font-size: 16px;
+   }
+   .sb-total-text {
+    font-size: 36px;
+    color: #F3C622;
+}
+.sb-total-value {
+    font-size: 26px;
+}
+.sb-text {
+    font-size: 16px;
+}
+.money-back-icon {
+    height: 50px;
+    width: 50px;
+}
+.store-bottom {
+    flex-direction: column;
+    gap: 50px;
+}
+}
+
+@media (max-width: 600px) {
+    .store-subtitle {
+        font-size: 19px;
+    }
+    .store-title {
+        color: #FCB43A;
+        font-family: 'Handlee';
+        font-size: 44px;
+    }
+    .sb-button {
+        font-size: 14px;
+   }
+   .sb-total-text {
+    font-size: 34px;
+    color: #F3C622;
+}
+.sb-total-value {
+    font-size: 24px;
+}
+.sb-text {
+    font-size: 14px;
+}
+.money-back-icon {
+    height: 45px;
+    width: 45px;
+}
 }

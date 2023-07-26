@@ -1,63 +1,39 @@
 .footer {
-    color: white;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-top: 150px;
-    width: 100%;
-    border-top: 1px solid gray;
+    border-top: 2px solid #3A3637;
+    margin-top: 100px;
+    padding: 10px;
 }
-.footer-elements-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.footer-elements-left {
+.footer-elements-left,.footer-elements-center,.footer-elements-right {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 10px 0 10px 0;
+    gap: 5px;
+    font-size: 16px;
 }
-.fel-text-left {
+.fel-text {
     text-decoration: none;
     color: white;
+    font-size: 16px;
 }
-.footer-elements-center {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.end {
+    color: white;
+    cursor: default;
 }
-.pay-card {
-    max-width: 45px;
-    max-height: 45px;
-}
-
-/* Responsive */
 
 @media (max-width: 1400px) {
-    .fel-text-left {
-        font-size: 15px;
-    }
-    .pay-card-footer {
-        height: 43px;
-        width: 43px;
+    .fel-text, .end {
+        font-size: 12px;
     }
 }
 @media (max-width: 1200px) {
-    .fel-text-left {
-        font-size: 13px;
-    }
-    .pay-card-footer {
-        height: 35px;
-        width: 35px;
+    .fel-text, .end {
+        font-size: 10px;
     }
 }
 @media (max-width: 600px) {
-    .fel-text-left {
-        font-size: 7px;
-    }
-    .pay-card-footer {
-        height: 22px;
-        width: 22px;
+    .fel-text, .end {
+        font-size: 8px;
     }
 }

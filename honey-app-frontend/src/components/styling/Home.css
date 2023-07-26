@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-
+  margin-top: 100px;
 }
 .home-text-container {
   display: flex;
@@ -119,6 +119,7 @@
   .home {
     flex-direction: column-reverse;
     gap: 0px;
+    margin-top: 200px;
   }
   .home-text-container {
     padding: 5px;
@@ -143,5 +144,8 @@
   }
   .home-text-container {
     border: none;
+  }
+  .home {
+    margin-top: 300px;
   }
 }

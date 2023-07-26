@@ -2,6 +2,7 @@
     max-height: 600px;
     border-radius: 40px;
 }
+
 .about {
     display: flex;
     align-items: center;
@@ -9,33 +10,84 @@
     gap: 100px;
     margin-top: 100px;
 }
+
 .about-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
+
 .about-history {
     margin: 0;
     font-family: 'Caveat';
     font-size: 25px;
     color: #FCD615;
 }
+
 .about-title {
     margin: 0;
     font-family: 'Handlee';
     font-size: 50px;
     color: #FCB43A;
 }
+
 .about-text {
     flex: 1;
     max-width: 600px;
     margin: 0;
-    font-family: 'Handlee';
-    font-size: 18px;
+    font-family: 'Patrick Hand';
+    font-size: 22px;
     color: white;
+    font-weight: 100;
 }
-.ah2, .at2 {
+
+.ah2,
+.at2 {
     display: none;
+}
+
+.about-bottom {
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.ab-table-1,
+.ab-table-2,
+.ab-table-3 {
+    border: 2px solid #FCD615;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    gap: 5px;
+}
+
+.ab-table-icon {
+    font-size: 70px;
+    margin: 0;
+    padding: 0;
+}
+
+.ab-table-title {
+    font-size: 32px;
+    font-family: 'Handlee';
+    margin: 0;
+    padding: 0;
+    color: #FCB43A;
+}
+
+.ab-table-text {
+    margin: 0;
+    padding: 0;
+    font-family: 'Patrick Hand';
+    font-size: 20px;
+    font-weight: 100;
+    width: 400px;
+    text-align: center;
 }
 
 /* Responsive */
@@ -44,57 +96,114 @@
     .about-img {
         max-height: 500px;
     }
+
     .about-history {
         font-size: 23px;
     }
+
     .about-title {
         font-size: 45px;
     }
+
     .about-text {
+        font-size: 20px;
+    }
+
+    .ab-table-icon {
+        font-size: 65px;
+    }
+
+    .ab-table-title {
+        font-size: 30px;
+    }
+
+    .ab-table-text {
         font-size: 18px;
+        width: 320px;
     }
 }
+
 @media(max-width: 1200px) {
     .about-img {
         max-height: 450px;
     }
+
     .about-history {
         display: none;
     }
+
     .about-title {
         display: none;
     }
+
     .ah2 {
         display: block;
         font-size: 21px;
     }
+
     .at2 {
         display: block;
         font-size: 40px;
         padding: 10px 0 30px 0;
     }
+
     .about-text {
-        font-size: 20px;
+        font-size: 18px;
         max-width: 500px;
     }
+
     .about {
         flex-direction: column;
         gap: 0px;
         margin-top: 100px;
     }
+
+    .about-bottom {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .ab-table-icon {
+        font-size: 60px;
+    }
+
+    .ab-table-title {
+        font-size: 28px;
+    }
+
+    .ab-table-text {
+        font-size: 16px;
+    }
 }
+
 @media(max-width: 600px) {
     .about-img {
         max-height: 450px;
     }
+
     .ah2 {
         font-size: 19px;
     }
+
     .at2 {
         font-size: 35px;
     }
+
     .about-text {
-        font-size: 15px;
+        font-size: 16px;
         max-width: 300px;
+    }
+
+    .ab-table-icon {
+        font-size: 55px;
+    }
+
+    .ab-table-title {
+        font-size: 26px;
+    }
+
+    .ab-table-text {
+        font-size: 14px;
+        width: 250px;
     }
 }
